@@ -1,4 +1,4 @@
-package com.jw.myproject.test;
+package com.jw.myproject.test.thread;
 
 import lombok.Data;
 

@@ -1,11 +1,17 @@
-package com.jw.myproject.test;
+package com.jw.myproject.test.thread;
 
 import com.jw.myproject.test.thread.ThreadTest;
+import lombok.Data;
 
+@Data
 public class Test {
+
+    private static ThreadException threadException = new ThreadException();
+
     public static void main(String[] args) {
 //        testConsumer();
-        testAddSum();
+//        testAddSum();
+        newThread(20);
     }
 
     private static void testAddSum() {
@@ -79,5 +85,17 @@ public class Test {
         c7.start();
         c8.start();
         c9.start();
+    }
+
+    private static void newThread(int count){
+        if(count < 5){
+            count = 5;
+        }
+        for (int i=0; i< count; i++){
+            ThreadTest2 t = new ThreadTest2();
+            t.start();
+//            t.setUncaughtExceptionHandler(threadException);
+        }
+        Thread.setDefaultUncaughtExceptionHandler(threadException);
     }
 }
