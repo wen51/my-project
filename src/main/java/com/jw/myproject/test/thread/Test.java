@@ -11,7 +11,16 @@ public class Test {
     public static void main(String[] args) {
 //        testConsumer();
 //        testAddSum();
-        newThread(20);
+//        newThread(20);
+        notifyTest();
+    }
+
+    private static void notifyTest() {
+        for (int i=0; i< 10; i++){
+            ThreadTest2 t = new ThreadTest2();
+            t.start();
+        }
+
     }
 
     private static void testAddSum() {
