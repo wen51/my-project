@@ -1,5 +1,7 @@
 package com.jw.myproject.test;
 
+import com.jw.myproject.test.thread.ThreadTest;
+
 public class Test {
     public static void main(String[] args) {
 //        testConsumer();
