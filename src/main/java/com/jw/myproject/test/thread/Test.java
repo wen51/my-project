@@ -12,11 +12,20 @@ public class Test {
 //        testConsumer();
 //        testAddSum();
 //        newThread(20);
-        notifyTest();
+//        notifyTest();
+        volatileTest();
     }
 
     private static void notifyTest() {
-        for (int i=0; i< 10; i++){
+        for (int i=0; i< 8; i++){
+            ThreadTest2 t = new ThreadTest2();
+            t.start();
+        }
+
+    }
+
+    private static void volatileTest() {
+        for (int i=0; i< 1000; i++){
             ThreadTest2 t = new ThreadTest2();
             t.start();
         }
