@@ -11,6 +11,8 @@ public class UnsynchBankTest {
         for (int i=0; i< NACCOUNTS; i++){
             int fromAccount = i;
 
+            Runnable r2 = () -> System.out.println(1);
+            new Thread(r2).start();
             Runnable r = () ->{
                 try {
                     while (true){
