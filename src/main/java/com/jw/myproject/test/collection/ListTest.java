@@ -1,35 +1,58 @@
 package com.jw.myproject.test.collection;
 
+import org.springframework.util.CollectionUtils;
+
 import java.util.*;
 
 public class ListTest {
-    public static void main(String[] args) {
-        Set<Object> set = new HashSet<>();
-        for(int i=0; i<100; i++){
-            Random random = new Random();
-            set.add(random.nextInt(101));
+    //迭代次数
+    public static int ITERATION_NUM = 3000000;
+
+    public static void main(String[] agrs) {
+//        insertPerformanceCompare();
+        sort();
+    }
+
+    public static void sort(){
+        List<String> lit = new ArrayList<>();
+        lit.add("abc");
+        lit.add("def");
+        lit.add("aaa");
+        lit.add("abc");
+        Collections.sort(lit);
+        System.out.println(lit.get(0));
+        for(String s : lit){
+            System.out.println(s);
+        }
+    }
+
+    //新增性能比较：
+    public static void insertPerformanceCompare() {
+        try {
+            Thread.sleep(5000);
+        } catch (InterruptedException e) {
+            e.printStackTrace();
         }
 
-        Iterator<Object> iteratorSet = set.iterator();
-
-        while (iteratorSet.hasNext()){
-            System.out.print(","+iteratorSet.next());
+        System.out.println("LinkedList新增测试开始");
+        long start = System.nanoTime();
+        List<Integer> linkedList = new LinkedList<Integer>();
+        for (int x = 0; x < ITERATION_NUM; x++) {
+            linkedList.add(x);
         }
+        long end = System.nanoTime();
+        long linkCost = end - start;
+        System.out.println(linkCost);
 
-        System.out.println();
-        System.out.println("set:"+set.size());
-        List<Object> list = new ArrayList<>();
-        for(int i=0;i<100; i++){
-            Random random = new Random();
-            list.add(random.nextInt(101));
-
+        System.out.println("ArrayList新增测试开始");
+        long arrayStart = System.nanoTime();
+        List<Integer> arrayList = new ArrayList<Integer>();
+        for (int x = 0; x < ITERATION_NUM; x++) {
+            arrayList.add(x);
         }
-        Iterator<Object> iteratorList = list.iterator();
-
-        while (iteratorList.hasNext()){
-            System.out.print(","+iteratorList.next());
-        }
-        System.out.println();
-        System.out.println(list.size());
+        long arrayEnd = System.nanoTime();
+        long arrayCost = arrayEnd - arrayStart;
+        System.out.println(arrayCost);
+        System.out.println("LinkedList新增更快："+ (linkCost < arrayCost));
     }
 }
