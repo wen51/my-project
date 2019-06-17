@@ -3,6 +3,7 @@ package com.jw.myproject.test.sync;
 import lombok.Data;
 
 import java.util.Arrays;
+import java.util.concurrent.ConcurrentHashMap;
 import java.util.concurrent.locks.Condition;
 import java.util.concurrent.locks.Lock;
 import java.util.concurrent.locks.ReentrantLock;
@@ -26,6 +27,7 @@ public class Bank {
     public void transfer(int from , int to, double amount){
         bankLock.lock();
         try {
+            ConcurrentHashMap<String, Long> map = new ConcurrentHashMap<>();
             while (accounts[from] < amount){
                 sufficientFunds.await();
             }
@@ -44,11 +46,16 @@ public class Bank {
     }
 
     public double getTotalBalance() {
-        double sum = 0;
-        for(double i : accounts){
-            sum += i;
+        bankLock.lock();
+        try {
+            double sum = 0;
+            for(double i : accounts){
+                sum += i;
+            }
+            return sum;
+        } finally {
+            bankLock.unlock();
         }
-        return sum;
     }
 
     public int size(){
