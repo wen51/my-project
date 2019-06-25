@@ -9,7 +9,7 @@ public class App {
         ApplicationContext context = new ClassPathXmlApplicationContext("classpath:application.xml");
         System.out.println("context 启动成功");
         //从context中取出bean（此处可能包冲突，无法使用spring4的类）
-        MessageService messageService = context.getBean(MessageService.class);
-        System.out.println(messageService.getMessage());
+//        MessageService messageService = context.getBean(MessageService.class);
+//        System.out.println(messageService.getMessage());
     }
 }
