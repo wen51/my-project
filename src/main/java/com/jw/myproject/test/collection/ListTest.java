@@ -6,11 +6,11 @@ import java.util.*;
 
 public class ListTest {
     //迭代次数
-    public static int ITERATION_NUM = 3000000;
+    public static int ITERATION_NUM = 10000;
 
     public static void main(String[] agrs) {
-//        insertPerformanceCompare();
-        sort();
+        insertPerformanceCompare();
+//        sort();
     }
 
     public static void sort(){
@@ -48,11 +48,12 @@ public class ListTest {
         long arrayStart = System.nanoTime();
         List<Integer> arrayList = new ArrayList<Integer>();
         for (int x = 0; x < ITERATION_NUM; x++) {
-            arrayList.add(x);
+            arrayList.add(0,x);
         }
         long arrayEnd = System.nanoTime();
         long arrayCost = arrayEnd - arrayStart;
         System.out.println(arrayCost);
         System.out.println("LinkedList新增更快："+ (linkCost < arrayCost));
     }
+
 }
