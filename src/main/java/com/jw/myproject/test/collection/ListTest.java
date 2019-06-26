@@ -3,6 +3,7 @@ package com.jw.myproject.test.collection;
 import java.util.*;
 
 public class ListTest {
+
     public static void main(String[] args) {
         Set<Object> set = new HashSet<>();
         for(int i=0; i<100; i++){
