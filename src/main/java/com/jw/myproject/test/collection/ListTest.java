@@ -8,8 +8,14 @@ public class ListTest {
     //迭代次数
     public static int ITERATION_NUM = 10000;
     public static void main(String[] agrs) {
-        insertPerformanceCompare();
+//        insertPerformanceCompare();
 //        sort();
+        String a = "abc";
+        String b = String.valueOf("abc");
+        String c = new String("abc");
+        System.out.println(a == b);
+        System.out.println(a == c);
+        System.out.println(b == c);
     }
 
     public static void sort(){
