@@ -1,5 +1,6 @@
 package com.jw.myproject.test.finals;
 
+import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
 public class FinalTest {
@@ -9,7 +10,7 @@ public class FinalTest {
     static FinalTest finalTest;
 
     public FinalTest() {
-        LoggerFactory l = LoggerFactory.getLogger();
+        Logger l = LoggerFactory.getLogger(FinalTest.class);
         i = new int[1];
     }
 }
