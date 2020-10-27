@@ -1,16 +1,13 @@
 package com.jw.myproject.aop;
 
-import org.aspectj.lang.annotation.Aspect;
-import org.springframework.stereotype.Component;
-
 import java.util.ArrayList;
 import java.util.List;
 
 /**
  * @author tsign
  */
-@Aspect
-@Component
+//@Aspect
+//@Component
 public class AspectAdvice {
 
     // 指定关键字
