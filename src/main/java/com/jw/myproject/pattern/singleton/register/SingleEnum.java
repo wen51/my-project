@@ -1,4 +1,4 @@
-package com.jw.myproject.design.pattern.singleton.register;
+package com.jw.myproject.pattern.singleton.register;
 
 /**
  * @author lijw

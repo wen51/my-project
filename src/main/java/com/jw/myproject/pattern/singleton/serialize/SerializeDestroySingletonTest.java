@@ -1,4 +1,4 @@
-package com.jw.myproject.design.pattern.singleton.serialize;
+package com.jw.myproject.pattern.singleton.serialize;
 
 import java.io.*;
 

@@ -1,4 +1,4 @@
-package com.jw.myproject.design.pattern.singleton.lazy;
+package com.jw.myproject.pattern.singleton.lazy;
 
 /**
  * @author lijw
