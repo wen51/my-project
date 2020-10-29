@@ -39,7 +39,8 @@ public class JWProxy {
             for (Method m : interfaces[0].getMethods()) {
                 sb.append("public " + m.getReturnType().getName() + " " + m.getName() + " () {" + ln);
                     sb.append("try {" + ln);
-                        sb.append("Method m = " + interfaces[0].getName() + ".class.getMethod(\"" + m.getName() +"\")" + ln);
+                        sb.append("Method m = " + interfaces[0].getName() + ".class.getMethod(\"" + m.getName() +"\", new Class[]{})" + ln);
+                        sb.append("this.h.invoke(this, m, null);" + ln);
                     sb.append("} catch (Exception e ) {\n" +
                             "            e.printStackTrace();\n" +
                             "        }" + ln);
