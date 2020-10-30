@@ -1,6 +1,6 @@
-package com.jw.myproject.pattern.proxy.staticproxy.dbrouter;
+package com.jw.myproject.pattern.proxy.dbrouter;
 
-import com.jw.myproject.pattern.proxy.staticproxy.dbrouter.db.DynamicDataSourceEntity;
+import com.jw.myproject.pattern.proxy.dbrouter.db.DynamicDataSourceEntity;
 
 import java.text.SimpleDateFormat;
 import java.util.Date;

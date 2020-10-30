@@ -1,7 +1,7 @@
-package com.jw.myproject.pattern.proxy.staticproxy.dynamicproxy.jwproxy;
+package com.jw.myproject.pattern.proxy.dynamicproxy.jwproxy;
 
+import com.jw.myproject.pattern.proxy.dynamicproxy.jdkproxy.Girl;
 import com.jw.myproject.pattern.proxy.staticproxy.Person;
-import com.jw.myproject.pattern.proxy.staticproxy.dynamicproxy.jdkproxy.Girl;
 
 /**
  * @author lijw
@@ -12,6 +12,7 @@ public class JWProxyTest {
     public static void main(String[] args) {
         try {
             Person person = (Person) new JWMeipo().getInstance(new Girl());
+            System.out.println(person.getClass());
             person.findLove();
         } catch (Exception e) {
             e.printStackTrace();

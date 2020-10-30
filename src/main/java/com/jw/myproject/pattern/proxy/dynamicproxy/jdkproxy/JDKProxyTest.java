@@ -1,4 +1,4 @@
-package com.jw.myproject.pattern.proxy.staticproxy.dynamicproxy.jdkproxy;
+package com.jw.myproject.pattern.proxy.dynamicproxy.jdkproxy;
 
 import com.jw.myproject.pattern.proxy.staticproxy.Person;
 

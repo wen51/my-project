@@ -1,4 +1,4 @@
-package com.jw.myproject.pattern.proxy.staticproxy.dbrouter.db;
+package com.jw.myproject.pattern.proxy.dbrouter.db;
 
 /**
  * @author lijw

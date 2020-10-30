@@ -1,4 +1,4 @@
-package com.jw.myproject.pattern.proxy.staticproxy.dynamicproxy.jwproxy;
+package com.jw.myproject.pattern.proxy.dynamicproxy.jwproxy;
 
 import java.lang.reflect.Method;
 

@@ -1,29 +1,26 @@
-package com.jw.myproject.pattern.proxy.staticproxy.dynamicproxy.jwproxy;
+package com.jw.myproject.pattern.proxy.dynamicproxy.jwproxy;
 
-import com.jw.myproject.pattern.proxy.staticproxy.Person;
-
-import java.lang.reflect.InvocationHandler;
 import java.lang.reflect.Method;
-import java.lang.reflect.Proxy;
 
 /**
+ * 代理
  * @author lijw
  * @date 2020/10/29 15:56
  */
 public class JWMeipo implements JWInvocationHandler {
 
-    private Person target;
+    private Object obj;
 
-    public Object getInstance(Person person) throws Exception {
-        this.target = person;
-        Class<? extends Person> clazz = target.getClass();
+    public Object getInstance(Object obj) throws Exception {
+        this.obj = obj;
+        Class<?> clazz = this.obj.getClass();
         return JWProxy.newProxyInstance(new JWClassLoder(), clazz.getInterfaces(), this);
     }
 
     @Override
     public Object invoke(Object proxy, Method method, Object[] args) throws Throwable {
         this.before();
-        Object invoke = method.invoke(this.target, args);
+        Object invoke = method.invoke(this.obj, args);
         this.after();
         return invoke;
     }
