@@ -10,6 +10,7 @@ import java.lang.reflect.Constructor;
 import java.lang.reflect.Method;
 
 /**
+ * 用来生成源代码的工具类，仅此而已
  * 主要是动态生成代码
  * @author lijw
  * @date 2020/10/29 16:14
