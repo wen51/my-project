@@ -17,5 +17,5 @@ public class Order {
     /**
      * 根据订单创建时间进行按年分库
      */
-    private Long crateTime;
+    private Long createTime;
 }

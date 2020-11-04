@@ -13,11 +13,13 @@ public class DbRouterProxyTest {
 
     public static void main(String[] args) {
         Order order = new Order();
-        order.setCrateTime(new Date().getTime());
+        order.setCreateTime(new Date().getTime());
 
-        IOrderService orderService = new OrderServiceStaticProxy(new OrderService());
-        orderService.createOrder(order);
+//        // 静态代理
+//        IOrderService orderService = new OrderServiceStaticProxy(new OrderService());
+//        orderService.createOrder(order);
 
-
+        IOrderService iOrderService = (IOrderService) new OrderServiceDynamicProxy().getInstace(new OrderService());
+        iOrderService.createOrder(order);
     }
 }
