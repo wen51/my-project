@@ -25,3 +25,7 @@
 /.nb-gradle/
 mvnw
 mvnw.cmd
+/demo/.mvn/wrapper/
+/gateway/.mvn/wrapper/
+/gateway/target/
+/demo/target/
