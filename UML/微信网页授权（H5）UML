@@ -1,0 +1,21 @@
+@startuml
+actor actor
+actor -> H5 : 点击微信授权登录
+H5 -> 后端: 有token则查询
+后端 -> 后端: 判断token是否失效
+H5 <-- 后端 : token有效则成功 / token失效
+H5 -> 微信: 无token则发起授权
+H5 <-- 微信: （重定向）code
+H5 -> 后端 : 获取openid（code）
+微信 <- 后端 : 查询openId（code）
+微信 --> 后端 : access_token、openId、refresh_token
+后端 -> 后端 : 判断是否已绑定手机号
+后端 -> 后端 : 生成登录token
+H5 <-- 后端 : 绑定手机号业务码/登录成功、token
+H5 -> H5 : 保存token
+actor <-- H5 : 展示绑定手机号页面
+H5 -> 后端 : 绑定手机号(mobile、smsCode、token)
+H5 <-- 后端 : 绑成功
+actor <-- H5 : 展示登录成功页面
+
+@enduml
