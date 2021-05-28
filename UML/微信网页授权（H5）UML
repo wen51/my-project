@@ -9,10 +9,7 @@ end box
 participant 微信 order 6
 
 用户 -> H5 : 点击微信授权登录
-H5 -> fleshopy: 有token则查询
-fleshopy -> fleshopy: 判断token是否失效
-H5 <-- fleshopy : token有效则成功 / token失效
-H5 -> 微信: 无token则发起授权
+H5 -> 微信: 发起授权
 H5 <-- 微信: （重定向）code
 H5 -> fleshopy : 登录（code）
 
@@ -21,12 +18,11 @@ fleshopy -> person : 获取openid（code）
 person -> basic : 获取openid（code）
 basic -> 微信 : 查询openId（code）
 basic <-- 微信 : 返回access_token、openId、refresh_token
-basic -> basic : 保存信息
 person <-- basic : 返回openId
 
 person -> person : 生成微信网页授权登录方式
-person -> person : 判断是否已绑定手机号
 person -> person : 生成登录token
+person -> person : 判断是否已绑定手机号
 
 fleshopy <-- person : 返回绑定手机号业务码/登录成功码、token
 
