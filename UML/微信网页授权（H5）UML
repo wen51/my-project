@@ -1,21 +1,40 @@
 @startuml
-actor actor
-actor -> H5 : 点击微信授权登录
-H5 -> 后端: 有token则查询
-后端 -> 后端: 判断token是否失效
-H5 <-- 后端 : token有效则成功 / token失效
+actor 用户 order 1
+participant H5 order 2
+box "后端服务" #ccffff
+participant fleshopy order 3
+participant person order 4
+participant basic order 5
+end box
+participant 微信 order 6
+
+用户 -> H5 : 点击微信授权登录
+H5 -> fleshopy: 有token则查询
+fleshopy -> fleshopy: 判断token是否失效
+H5 <-- fleshopy : token有效则成功 / token失效
 H5 -> 微信: 无token则发起授权
 H5 <-- 微信: （重定向）code
-H5 -> 后端 : 获取openid（code）
-微信 <- 后端 : 查询openId（code）
-微信 --> 后端 : access_token、openId、refresh_token
-后端 -> 后端 : 判断是否已绑定手机号
-后端 -> 后端 : 生成登录token
-H5 <-- 后端 : 绑定手机号业务码/登录成功、token
+H5 -> fleshopy : 登录（code）
+
+fleshopy -> person : 获取openid（code）
+
+person -> basic : 获取openid（code）
+basic -> 微信 : 查询openId（code）
+basic <-- 微信 : 返回access_token、openId、refresh_token
+basic -> basic : 保存信息
+person <-- basic : 返回openId
+
+person -> person : 生成微信网页授权登录方式
+person -> person : 判断是否已绑定手机号
+person -> person : 生成登录token
+
+fleshopy <-- person : 返回绑定手机号业务码/登录成功码、token
+
+H5 <-- fleshopy : 返回绑定手机号业务码/登录成功码、token
 H5 -> H5 : 保存token
-actor <-- H5 : 展示绑定手机号页面
-H5 -> 后端 : 绑定手机号(mobile、smsCode、token)
-H5 <-- 后端 : 绑成功
-actor <-- H5 : 展示登录成功页面
+用户 <-- H5 : 展示绑定手机号页面
+H5 -> fleshopy : 绑定手机号(mobile、smsCode、token)
+H5 <-- fleshopy : 绑成功
+用户 <-- H5 : 展示登录成功页面
 
 @enduml
