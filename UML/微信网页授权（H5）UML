@@ -17,20 +17,30 @@ fleshopy -> person : 获取openid（code）
 
 person -> basic : 获取openid（code）
 basic -> 微信 : 查询openId（code）
-basic <-- 微信 : 返回access_token、openId、refresh_token
+basic <-- 微信 : 返回openId、access_token、refresh_token
 person <-- basic : 返回openId
 
-person -> person : 生成微信网页授权登录方式
-person -> person : 生成登录token
-person -> person : 判断是否已绑定手机号
+person -> person : 判断站点下有无openId
+group openId已存在则登录成功
+fleshopy <-- person  : 有openId返回登录成功、token
+H5 <-- fleshopy : 有openId返回登录成功、token
+用户 <-- H5 : 展示登录成功页面
+end
 
-fleshopy <-- person : 返回绑定手机号业务码/登录成功码、token
+group openId不存在绑定手机号流程
+fleshopy <-- person : 无openId返回失败、openId
+H5 <-- fleshopy : 无openId返回失败、openId
 
-H5 <-- fleshopy : 返回绑定手机号业务码/登录成功码、token
-H5 -> H5 : 保存token
 用户 <-- H5 : 展示绑定手机号页面
 H5 -> fleshopy : 绑定手机号(mobile、smsCode、token)
-H5 <-- fleshopy : 绑成功
-用户 <-- H5 : 展示登录成功页面
+fleshopy -> person : 绑定手机号并获取token\n(mobile、smsCode、token、openId、siteId)
+person -> person : 生成站点用户及微信网页授权登录方式
 
+person -> person : 生成登录token
+
+fleshopy <-- person : 返回token
+H5 <-- fleshopy : 返回登录成功码、token
+H5 -> H5 : 保存token
+用户 <-- H5 : 展示登录成功页面
+end
 @enduml
