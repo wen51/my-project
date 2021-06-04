@@ -13,7 +13,7 @@ H5 -> 微信: 发起授权
 H5 <-- 微信: （重定向）code
 H5 -> fleshopy : 登录（code）
 
-fleshopy -> person : 获取openid（code）
+fleshopy -> person : 登录（code）
 
 person -> basic : 获取openid（code）
 basic -> 微信 : 查询openId（code）
@@ -28,12 +28,12 @@ H5 <-- fleshopy : 有openId返回登录成功、token
 end
 
 group openId不存在绑定手机号流程
-fleshopy <-- person : 无openId返回失败、openId
-H5 <-- fleshopy : 无openId返回失败、openId
+fleshopy <-- person : 无openId返回失败、登录方式id
+H5 <-- fleshopy : 无openId返回失败、登录方式id
 
 用户 <-- H5 : 展示绑定手机号页面
-H5 -> fleshopy : 绑定手机号(mobile、smsCode、token)
-fleshopy -> person : 绑定手机号并获取token\n(mobile、smsCode、token、openId、siteId)
+H5 -> fleshopy : 绑定手机号\n(mobile、smsCode、登录方式id、siteId)
+fleshopy -> person : 绑定手机号并获取token\n(mobile、smsCode、登录方式id、siteId)
 person -> person : 生成站点用户及微信网页授权登录方式
 
 person -> person : 生成登录token
