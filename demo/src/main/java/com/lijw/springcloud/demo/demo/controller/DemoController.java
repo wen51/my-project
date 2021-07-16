@@ -1,4 +1,4 @@
-package com.lijw.springcloud.demo.demo;
+package com.lijw.springcloud.demo.demo.controller;
 
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
