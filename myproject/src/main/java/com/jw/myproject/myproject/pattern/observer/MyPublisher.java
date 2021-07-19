@@ -16,7 +16,8 @@ import javax.annotation.Resource;
  * @author lijw
  * @date 2021/6/25 16:23
  */
-@Component
+//
+//@Component
 public class MyPublisher {
 
     @Resource
