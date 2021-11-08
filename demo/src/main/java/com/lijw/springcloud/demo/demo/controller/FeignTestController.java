@@ -12,6 +12,7 @@ public class FeignTestController {
 
     @GetMapping("/feign/hello")
     public String hello() {
+        System.out.println("Hello World!!!");
         return "Hello World!!!";
     }
 }

@@ -1,0 +1,6 @@
+@startuml
+AbstractApplicationContext -> AbstractApplicationContext: obtainFreshBeanFactory()
+AbstractApplicationContext -> AbstractApplicationContext: invokeBeanFactoryPostProcessors(beanFactory)
+AbstractApplicationContext -> PostProcessorRegistrationDelegate: invokeBeanFactoryPostProcessors(beanFactory, getBeanFactoryPostProcessors());
+
+@enduml
