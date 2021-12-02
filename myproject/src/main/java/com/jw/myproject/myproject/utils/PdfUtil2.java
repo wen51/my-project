@@ -1,7 +1,7 @@
 package com.jw.myproject.myproject.utils;
 
 import com.itextpdf.text.pdf.BaseFont;
-import com.jw.myproject.myproject.FreemarkerInfo;
+import com.jw.myproject.myproject.demo.freemarker.FreemarkerInfo;
 import com.lowagie.text.DocumentException;
 import freemarker.template.Configuration;
 import freemarker.template.Template;
