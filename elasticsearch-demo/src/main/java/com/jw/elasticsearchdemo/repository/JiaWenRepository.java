@@ -23,6 +23,9 @@ public interface JiaWenRepository extends ElasticsearchRepository<JiaWen, String
 
     List<JiaWen> findByNameIn(List<String> nameList);
 
+    /**
+     * 注意：DSL开头不能用query，貌似被废弃了
+     */
     @Query("{\n" +
 
             "    \"bool\": {\n" +
