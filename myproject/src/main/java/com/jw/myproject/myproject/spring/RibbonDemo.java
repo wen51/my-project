@@ -12,7 +12,7 @@ public class RibbonDemo {
     private RestTemplate restTemplate;
 
     public void test() {
-        restTemplate.getForObject("", null);
+        restTemplate.getForObject(" ", null);
     }
 
 }
