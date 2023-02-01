@@ -16,7 +16,6 @@ public class ThreadPoolExecutorDemo {
             System.out.println(123);
         });
 
-        executor.
 
     }
 }
